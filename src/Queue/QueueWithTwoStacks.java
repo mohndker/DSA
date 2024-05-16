@@ -12,6 +12,7 @@ public class QueueWithTwoStacks<T> {
     public QueueWithTwoStacks() {
         stack1 = new Stack<>();
         stack2 = new Stack<>();
+        n = 0;
     }
 
     public int size() {
