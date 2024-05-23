@@ -5,12 +5,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Selection {
+
     //this class should not be instantiated.
     private static final Pattern EVERYTHING_PATTERN = Pattern.compile("\\A");
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
 
     private Selection() { }
-
 
     public static void sort(Comparable[] a) {
         int n = a.length;
@@ -78,33 +78,10 @@ public class Selection {
         }
     }
 
-    public static String readAll() {
-        Scanner scanner = new Scanner(System.in);
-        if (!scanner.hasNextLine())
-            return "";
-
-        String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
-        // not that important to reset delimiter, since now scanner is empty
-        scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
-        return result;
-    }
-
-    public static String[] readAllStrings() {
-        // we could use readAll.trim().split(), but that's not consistent
-        // because trim() uses characters 0x00..0x20 as whitespace
-        String[] tokens = WHITESPACE_PATTERN.split(readAll());
-        if (tokens.length == 0 || tokens[0].length() > 0)
-            return tokens;
-
-        // don't include first token if it is leading whitespace
-        String[] decapitokens = new String[tokens.length-1];
-        for (int i = 0; i < tokens.length - 1; i++)
-            decapitokens[i] = tokens[i+1];
-        return decapitokens;
-    }
-
     public static void main(String[] args) {
-        String[] a = readAllStrings();
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        String[] a = input.split(" ");
         Selection.sort(a);
         show(a);
     }
