@@ -7,9 +7,6 @@ import java.util.regex.Pattern;
 public class Selection {
 
     //this class should not be instantiated.
-    private static final Pattern EVERYTHING_PATTERN = Pattern.compile("\\A");
-    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
-
     private Selection() { }
 
     public static void sort(Comparable[] a) {
