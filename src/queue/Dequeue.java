@@ -6,7 +6,7 @@
  *  items from either the front or the back of the data structure.
  **************************************************************************** */
 
-package Queue;
+package queue;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

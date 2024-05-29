@@ -1,8 +1,7 @@
-package Sort;
+package sort;
 
 import java.util.Comparator;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Selection {
 

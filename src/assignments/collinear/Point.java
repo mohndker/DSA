@@ -1,0 +1,94 @@
+/******************************************************************************
+ *  Compilation:  javac Point.java
+ *  Execution:    java Point
+ *  Dependencies: none
+ * <p>
+ *  An immutable data type for points in the plane.
+ *  For use on Coursera, Algorithms Part I programming assignment.
+ *
+ ******************************************************************************/
+
+package assignments.collinear;
+
+import java.util.Comparator;
+
+public class Point {
+    private final int x;  // x-coordinate of this point
+    private final int y;  // y-coordinate of this point
+
+    /**
+     * Constructs a new point(x, y)
+     *
+     * @param x the <em>x</em>-coordinate of the point
+     * @param y the <em>y</em>-coordinate of the point
+     */
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Returns the slope between this point and the specified point.
+     * Formally, if the two points are (x0, y0) and (x1, y1), then the slope
+     * is (y1 - y0) / (x1 - x0). For completeness, the slope is defined to be
+     * +0.0 if the line segment connecting the two points is horizontal;
+     * Double.POSITIVE_INFINITY if the line segment is vertical;
+     * and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1) are equal.
+     *
+     * @param point the other point
+     * @return the slope between this point and the specified point
+     */
+    public double slopeTo(Point point) {
+        if (point.x == x && point.y == y) {
+            return +0.0;
+        } else if (point.x == x) {
+            return Double.POSITIVE_INFINITY;
+        } else if (point.y == y) {
+            return Double.NEGATIVE_INFINITY;
+        }
+        return (double) (point.y - y) / (point.x - x);
+    }
+
+    /**
+     * Compares two points by y-coordinate, breaking ties by x-coordinate.
+     * Formally, the invoking point (x0, y0) is less than the argument point
+     * (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+     *
+     * @param point the other point
+     * @return the value <tt>0</tt> if this point is equal to the argument
+     * point (x0 = x1 and y0 = y1);
+     * a negative integer if this point is less than the argument
+     * point; and a positive integer if this point is greater than the
+     * argument point
+     */
+    public int compareTo(Point point) {
+        if (point.y == y) return Integer.compare(point.x, x);
+        else return Integer.compare(point.y, y);
+    }
+
+    /**
+     * Compares two points by the slope they make with this point.
+     * The slope is defined as in the slopeTo() method.
+     *
+     * @return the Comparator that defines this ordering on points
+     */
+    public Comparator<Point> slopeOrder() {
+        return (p1, p2) -> {
+            double slope1 = slopeTo(p1);
+            double slope2 = slopeTo(p2);
+            return Double.compare(slope1, slope2);
+        };
+    }
+
+    /**
+     * Returns a string representation of this point.
+     * This method is provided for debugging;
+     * your program should not rely on the format of the string representation.
+     *
+     * @return a string representation of this point
+     */
+    public String toString() {
+        /* DO NOT MODIFY */
+        return "(" + x + ", " + y + ")";
+    }
+}
