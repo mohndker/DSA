@@ -9,25 +9,27 @@ public class BruteCollinearPoints {
     private final List<LineSegments> segmentList = new ArrayList<>();
 
     public BruteCollinearPoints(Point[] points) {
-        if (points == null || isAnyPointNull(points) || isAnyPointRepeated(points))
+        if (points == null || isAnyPointNull(points))
             throw new IllegalArgumentException();
 
-        int n = points.length;
-        Point extermalPoint = new Point(0, 0);
+        Point[] clonePoints = new Point[points.length];
+        System.arraycopy(points, 0, clonePoints, 0, points.length);
+        Arrays.sort(clonePoints);
 
+        if (isDuplicatePointsFound(clonePoints)) throw new IllegalArgumentException();
+
+        int n = points.length;
         for (int p = 0; p < n - 3; p++) {
             for (int q = p + 1; q < n - 2; q++) {
                 for (int r = q + 1; r < n - 1; r++) {
                     for (int s = r + 1; s < n; s++) {
-                        Point p1 = points[p];
-                        Point p2 = points[q];
-                        Point p3 = points[r];
-                        Point p4 = points[s];
+                        Point p1 = clonePoints[p];
+                        Point p2 = clonePoints[q];
+                        Point p3 = clonePoints[r];
+                        Point p4 = clonePoints[s];
 
-                        if (p1.slopeTo(p2) == p1.slopeTo(p3) && p1.slopeTo(p2) == p1.slopeTo(p4)
-                                && p1.slopeTo(extermalPoint) != p1.slopeTo(p4)) {
+                        if (p1.slopeTo(p2) == p1.slopeTo(p3) && p1.slopeTo(p2) == p1.slopeTo(p4)) {
                             segmentList.add(new LineSegments(p1, p4));
-                            extermalPoint = p4;
                         }
                     }
                 }
@@ -49,11 +51,9 @@ public class BruteCollinearPoints {
         return false;
     }
 
-    private boolean isAnyPointRepeated(Point[] points) {
-        Arrays.sort(points);
-        for (int i = 0; i < points.length - 1; i++)
-            if (points[i].compareTo(points[i + 1]) == 0)
-                return true;
+    private boolean isDuplicatePointsFound(Point[] points) {
+        for (int i = 1; i < points.length; i++)
+            if (points[i].compareTo(points[i - 1]) == 0) return true;
         return false;
     }
 }
