@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ThreeSum {
@@ -8,16 +9,33 @@ public class ThreeSum {
 
     }
 
+    public static List<List<Integer>> threeSum(int[] nums) {
+        // int array, return all triplets at i, j, k such i!=j, i != k, j != k, i + j + k = 0;
+        // nums = {-1, 0, 1, 2, -1, -4}
+        List<List<Integer>> res = new ArrayList<>();
 
+        Arrays.sort(nums);
 
-    public static int findComplement(int[] a, int key, int low, int high) {
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (key < a[mid]) high = mid - 1;
-            else if (key > a[mid]) low = mid + 1;
-            else return mid;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int j = i + 1;
+            int k = nums.length - 1;
+
+            while (j < k) {
+                int total = nums[i] + nums[j] + nums[k];
+
+                if (total > 0) k--;
+                else if (total < 0) j++;
+                else {
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++;
+
+                    while (nums[j] == nums[j-1] && j < k) j++;
+                }
+            }
         }
 
-        return -1;
+        return res;
     }
 }
