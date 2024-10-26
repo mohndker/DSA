@@ -12,7 +12,7 @@ package assignments.collinear;
 
 import java.util.Comparator;
 
-public class Point {
+public class Point implements Comparable<Point> {
     private final int x;  // x-coordinate of this point
     private final int y;  // y-coordinate of this point
 
@@ -90,5 +90,24 @@ public class Point {
     public String toString() {
         /* DO NOT MODIFY */
         return "(" + x + ", " + y + ")";
+    }
+
+    /**
+     * Draws this point to standard draw.
+     */
+    public void draw() {
+        /* DO NOT MODIFY */
+        StdDraw.point(x, y);
+    }
+
+    /**
+     * Draws the line segment between this point and the specified point
+     * to standard draw.
+     *
+     * @param that the other point
+     */
+    public void drawTo(Point that) {
+        /* DO NOT MODIFY */
+        StdDraw.line(this.x, this.y, that.x, that.y);
     }
 }

@@ -1,5 +1,6 @@
 package sort;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,10 +49,35 @@ public class Quick3way {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        String[] a = input.split(" ");
-        Quick3way.sort(a);
-        Quick3way.show(a);
+//        Scanner scanner = new Scanner(System.in);
+//        String input = scanner.nextLine();
+//        String[] a = input.split(" ");
+//        Quick3way.sort(a);
+//        Quick3way.show(a);
+        int[] citations = {0, 1, 3, 4, 5, 6};
+        int n = citations.length - 1;
+        sort1(citations, 0, n);
+        System.out.println(Arrays.toString(citations));
+        System.out.println();
+    }
+
+    private static void sort1(int[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int lt = lo, gt = hi;
+        int v = a[lo];
+        int i = lo + 1;
+        while (i <= gt) {
+            if (a[i] > v) exch1(a, lt++, i++);
+            else if (a[i] < v) exch1(a, i, gt--);
+            else i++;
+        }
+        sort1(a, lo, lt - 1);
+        sort1(a, gt + 1, hi);
+    }
+
+    private static void exch1(int[] a, int i, int j) {
+        int swap = a[i];
+        a[i] = a[j];
+        a[j] = swap;
     }
 }

@@ -40,4 +40,11 @@ public class LineSegments {
     public String toString() {
         return p + " -> " + q;
     }
+
+    /**
+     * Draws this line segment to standard draw.
+     */
+    public void draw() {
+        p.drawTo(q);
+    }
 }

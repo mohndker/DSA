@@ -105,8 +105,8 @@ public class MaxPQ<key> implements Iterable<key> {
 
     private void exch(int i, int j) {
         key swap = pq[i];
-        pq[j] = pq[i];
-        pq[i] = swap;
+        pq[i] = pq[j];
+        pq[j] = swap;
     }
 
     private boolean isMaxHeap() {
@@ -154,5 +154,16 @@ public class MaxPQ<key> implements Iterable<key> {
             if (!hasNext()) throw new NoSuchElementException();
             return copy.delMax();
         }
+    }
+
+    public static void main(String[] args) {
+        MaxPQ<Integer> maxPQ = new MaxPQ<>();
+        maxPQ.insert(5);
+        maxPQ.insert(1);
+        maxPQ.insert(15);
+        maxPQ.insert(10);
+        maxPQ.insert(4);
+        System.out.println(maxPQ.delMax());
+        System.out.println(maxPQ.max());
     }
 }

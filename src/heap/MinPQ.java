@@ -101,8 +101,8 @@ public class MinPQ<key> implements Iterable<key> {
 
     private void exch(int i, int j) {
         key swap = pq[i];
-        pq[j] = pq[i];
-        pq[i] = swap;
+        pq[i] = pq[j];
+        pq[j] = swap;
     }
 
     private boolean isMinHeap() {

@@ -1,8 +1,6 @@
 package queue;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Random;
+import java.util.*;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private static final int INIT_CAPACITY = 8;
@@ -95,20 +93,30 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
-        rq.enqueue(1);
-        rq.enqueue(2);
-        rq.enqueue(3);
-        rq.enqueue(4);
-
-        System.out.println("Sampled item: " + rq.sample());
-        System.out.println("Removed item: " + rq.dequeue());
-        System.out.println("Queue size: " + rq.size());
-
-        System.out.println("Items in queue:");
-        for (int item : rq) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
+//        RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
+//        rq.enqueue(1);
+//        rq.enqueue(2);
+//        rq.enqueue(3);
+//        rq.enqueue(4);
+//
+//        System.out.println("Sampled item: " + rq.sample());
+//        System.out.println("Removed item: " + rq.dequeue());
+//        System.out.println("Queue size: " + rq.size());
+//
+//        System.out.println("Items in queue:");
+//        for (int item : rq) {
+//            System.out.print(item + " ");
+//        }
+//        System.out.println();
+//        List<Integer> temp= new ArrayList<>();
+//        temp.add(1);
+//        temp.add(2);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(1,0);
+        System.out.println(map.size());
+//        Random random1 = new Random();
+//        int index = random1.nextInt(2);
+//        System.out.println(temp.size());
+//        System.out.println(temp.get(index));
     }
 }
