@@ -13,6 +13,8 @@ public class MinStack {
 
     public void pop() {
         first = first.next;
+        char c = '4';
+        Integer.parseInt(String.valueOf(c));
     }
 
     public int top() {
