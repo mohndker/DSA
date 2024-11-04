@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.stack;
 
 public class MinStack {
     private Node first;

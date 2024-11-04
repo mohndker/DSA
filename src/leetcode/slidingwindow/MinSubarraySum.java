@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.slidingwindow;
 
 public class MinSubarraySum {
     public static void main(String[] args) {

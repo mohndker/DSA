@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.linkedlist;
 
 public class MergeTwoSortedLinkedLists {
     private static class ListNode {

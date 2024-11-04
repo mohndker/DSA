@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.matrix;
 
 import java.util.HashSet;
 import java.util.Set;
