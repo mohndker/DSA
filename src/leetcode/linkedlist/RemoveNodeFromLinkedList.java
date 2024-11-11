@@ -6,8 +6,8 @@ public class RemoveNodeFromLinkedList {
     }
 
     private static ListNode removeNode(ListNode head, int n) {
-        // [1, 2, 3, 4, 5, 6, 7] n = 3
-        // [1, 2, 3] n = 3
+        // [1, 2, 3, 4, 5, 6, 7] n = 6
+        // [1, 2, 3] n = 2
         // [1] n = 1
 
         ListNode first = head;
