@@ -6,6 +6,7 @@ public class SearchInsertPosition {
         System.out.println(searchInsert(new int[] {1, 3, 5, 6, 9}, 7)); // out : 4
         System.out.println(searchInsert(new int[] {0, 3, 5, 6, 9}, 1)); // out : 1
         System.out.println(searchInsert(new int[] {1, 3, 5, 6, 8}, 9)); // out : 5
+        System.out.println(1%3);
     }
 
     /**
